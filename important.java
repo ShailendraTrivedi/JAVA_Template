@@ -29,40 +29,23 @@ public class important {
 			while (t-- > 0) {
 				int n = Integer.parseInt(br.readLine());
 				String[] strings = br.readLine().split(" ");
-				if (n == 1)
-					System.out.println("YES");
-				else {
-					Arrays.sort(strings);
-					HashMap<String, Integer> map = new HashMap<>();
-					for (String s : strings) {
-						String str = sortString(s);
-						map.put(str, map.getOrDefault(str, 0)+1);
-					}
-					boolean flag = true;
-					for (int i : map.values()) {
-						if(i%2!=0) {
-							flag = false;
-							break;
-						}
-					}
-					if (flag) {
-						System.out.println("YES");
-					} else {
-						System.out.println("NO");
-					}
-				}
 
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
+	// ---------------------------------------------------------------------------------------------------------------------------------------------
+	// Sort String
 
 	public static String sortString(String inputString) {
 		char tempArray[] = inputString.toCharArray();
 		Arrays.sort(tempArray);
 		return new String(tempArray);
 	}
+
+	// ---------------------------------------------------------------------------------------------------------------------------------------------
+	// Is Prime Number
 
 	public static int isPrime(int num) {
 		int prime = 1;
@@ -73,6 +56,9 @@ public class important {
 		}
 		return num;
 	}
+
+	// ---------------------------------------------------------------------------------------------------------------------------------------------
+	// Next Prime Number
 
 	public static int nextPrime(int num) {
 		num++;
