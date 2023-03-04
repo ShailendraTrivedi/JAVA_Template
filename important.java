@@ -13,8 +13,8 @@ public class important {
 	// Main Method
 
 	public static void main(String[] args) throws IOException {
-		file = new File("/home/deependra/Code/Eclipse/JavaPractise/src/temp.txt");
-		br = new BufferedReader(new FileReader(file));
+//		file = new File("/home/deependra/Code/Eclipse/JavaPractise/src/temp.txt");
+//		br = new BufferedReader(new FileReader(file));
 
 		br = new BufferedReader(new InputStreamReader(System.in));
 		helper();
@@ -27,13 +27,64 @@ public class important {
 		try {
 			int t = Integer.parseInt(br.readLine());
 			while (t-- > 0) {
+				int n = Integer.parseInt(br.readLine());
 				String[] strings = br.readLine().split(" ");
-				int n = Integer.parseInt(strings[0]);
+				if (n == 1)
+					System.out.println("YES");
+				else {
+					Arrays.sort(strings);
+					HashMap<String, Integer> map = new HashMap<>();
+					for (String s : strings) {
+						String str = sortString(s);
+						map.put(str, map.getOrDefault(str, 0)+1);
+					}
+					boolean flag = true;
+					for (int i : map.values()) {
+						if(i%2!=0) {
+							flag = false;
+							break;
+						}
+					}
+					if (flag) {
+						System.out.println("YES");
+					} else {
+						System.out.println("NO");
+					}
+				}
 
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+
+	public static String sortString(String inputString) {
+		char tempArray[] = inputString.toCharArray();
+		Arrays.sort(tempArray);
+		return new String(tempArray);
+	}
+
+	public static int isPrime(int num) {
+		int prime = 1;
+		for (int i = 2; i < num; i++) {
+			if ((num % i) == 0) {
+				prime = 0;
+			}
+		}
+		return num;
+	}
+
+	public static int nextPrime(int num) {
+		num++;
+		for (int i = 2; i < num; i++) {
+			if (num % i == 0) {
+				num++;
+				i = 2;
+			} else {
+				continue;
+			}
+		}
+		return num;
 	}
 
 	// ---------------------------------------------------------------------------------------------------------------------------------------------
